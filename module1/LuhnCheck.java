@@ -1,3 +1,5 @@
+// Exercise 6.31 - Module 1 Programming Assignment 2
+
 import java.util.Scanner;
 
 public class LuhnCheck {
