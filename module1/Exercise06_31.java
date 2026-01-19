@@ -2,7 +2,7 @@
 
 import java.util.Scanner;
 
-public class LuhnCheck {
+public class Exercise06_31 {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
 

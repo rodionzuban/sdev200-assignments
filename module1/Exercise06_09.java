@@ -1,6 +1,6 @@
 // Exercise 6.9 - Module 1 Programming Assignment 1
 
-public class DistanceConversions {
+public class Exercise06_09 {
     public static void main(String[] args) {
         System.out.printf("%-10s %10s     %-10s %10s%n", "Feet", "Meters", "Meters", "Feet");
         System.out.println("--------------------------------------------");
@@ -20,5 +20,4 @@ public class DistanceConversions {
     public static double meterToFoot(double meter) {
         return 3.279 * meter;
     }
-
 }
