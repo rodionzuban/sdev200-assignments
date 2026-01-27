@@ -34,6 +34,8 @@ class RegularPolygon {
         this.y = y;
     }
 
+    // getter methods
+
     public int getSides() {
         return sides;
     }
@@ -50,6 +52,7 @@ class RegularPolygon {
         return y;
     }
 
+    // calculate perimeter and area
     public double getPerimeter() {
         return side * sides;
     }

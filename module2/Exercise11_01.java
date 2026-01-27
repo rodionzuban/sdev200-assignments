@@ -55,6 +55,7 @@ public class Exercise11_01 {
             this.side2 = side2;
             this.side3 = side3;
         }
+        // side length getter methods
 
         public double getSide1() {
             return side1;
@@ -68,6 +69,7 @@ public class Exercise11_01 {
             return side3;
         }
 
+        // overriden methods from abstract GeometricObject
         public double getPerimeter() {
             return side1 + side2 + side3;
         }

@@ -1,9 +1,13 @@
+// Exercise 13.15 - Module 3 Assignment 2
+
 package module3;
 
 import java.math.BigInteger;
 import java.util.Scanner;
 
 public class Exercise13_15 {
+
+    // test program
     public static void main(String args[]) {
         Scanner s = new Scanner(System.in);
 
@@ -35,6 +39,7 @@ public class Exercise13_15 {
             this.denominator = denominator.abs().divide(gcd);
         }
 
+        // find greatest common divisor using modulo
         private static BigInteger gcd(BigInteger n, BigInteger d) {
             BigInteger n1 = n.abs();
             BigInteger n2 = d.abs();
@@ -50,6 +55,7 @@ public class Exercise13_15 {
             return gcd;
         }
 
+        // getter methods
         public BigInteger getNumerator() {
             return numerator;
         }
@@ -58,6 +64,7 @@ public class Exercise13_15 {
             return denominator;
         }
 
+        // basic operations
         public Rational add(Rational secondRational) {
             BigInteger n = numerator.multiply(secondRational.getDenominator())
                     .add(denominator.multiply(secondRational.getNumerator()));
@@ -102,6 +109,8 @@ public class Exercise13_15 {
 
         }
 
+        // implement methods from abstract Number
+
         @Override
         public int intValue() {
             return (int) doubleValue();
@@ -122,6 +131,7 @@ public class Exercise13_15 {
             return (long) doubleValue();
         }
 
+        // implement Comparable<Rational> behavior
         @Override
         public int compareTo(Rational other) {
             int comparable = this.subtract(other).getNumerator().compareTo(BigInteger.ZERO);

@@ -15,6 +15,7 @@ public class Exercise13_09 {
             this.radius = radius;
         }
 
+        // getter and setter methods for radius
         public double getRadius() {
             return radius;
         }
@@ -23,6 +24,7 @@ public class Exercise13_09 {
             this.radius = radius;
         }
 
+        // implement abstract GeometricObject methods + calculateDiameter
         @Override
         public double getArea() {
             return radius * radius * Math.PI;
@@ -41,6 +43,8 @@ public class Exercise13_09 {
             System.out.println("The circle is created " + getDateCreated() + " and the radius is " + radius);
         }
 
+        // implement Comparable<Circle> behavior
+
         @Override
         public int compareTo(Circle other) {
             return Double.compare(this.radius, other.getRadius());
@@ -48,9 +52,13 @@ public class Exercise13_09 {
 
         @Override
         public boolean equals(Object obj) {
+            // check if objects are same reference
             if (obj == this) {
                 return true;
             }
+
+            // check if objects are same class, make sure not null
+
             if (obj == null || getClass() != obj.getClass()) {
                 return false;
             }
