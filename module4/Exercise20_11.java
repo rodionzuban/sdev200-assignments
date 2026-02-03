@@ -47,6 +47,11 @@ public class Exercise20_11 {
 
                 // remove if pair found, otherwise flag as mistake
                 if (character % 2 == 1) {
+                    if (groupingSymbols.isEmpty()) {
+                        valid = false;
+                        break;
+                    }
+
                     if (groups.charAt(character - 1) == groupingSymbols.peek()) {
                         groupingSymbols.pop();
                     } else {
@@ -57,6 +62,10 @@ public class Exercise20_11 {
                     groupingSymbols.add(groups.charAt(character));
                 }
             }
+        }
+
+        if (!groupingSymbols.isEmpty()) {
+            valid = false;
         }
 
         System.out.println(valid ? "Correct grouping pairs" : "Incorrect grouping pairs");
