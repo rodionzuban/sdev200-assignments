@@ -9,8 +9,7 @@ import java.util.Set;
 public class Exercise21_3 {
     public static void main(String[] args) throws Exception {
         Scanner input = new Scanner(System.in);
-        System.out.print("Enter a Java source file: ");
-        String filename = input.nextLine();
+        String filename = args[0];
 
         File file = new File(filename);
         if (file.exists()) {
@@ -44,25 +43,62 @@ public class Exercise21_3 {
 
         Scanner input = new Scanner(file);
 
-        String targetSequence = "";
+        boolean inComment = false;
+        boolean inString = false;
 
+        String currentWord = "";
+        String lastTwo = "";
+
+        // check each line in code
         while (input.hasNextLine()) {
             String line = input.nextLine();
+            currentWord = "";
 
-            for (String word : line.split("\\s+")) {
-                if (targetSequence.equals("")) {
-                    if (word.length() == 1 && word.charAt(0) == '"') {
-                        targetSequence = String.valueOf('"');
-                    } else if (word.length() >= 2 && word.substring(0, 2).equals("//")) {
-                        break;
-                    } else if (word.length() >= 2 && word.substring(0, 2).equals("/*")) {
-                        targetSequence = "*/";
-                    } else if (keywordSet.contains(word)) {
+            for (int i = 0; i < line.length(); i++) {
+
+                // if character can be used in an identifier, keep building the word. otherwise,
+                // check if the identifier
+                // is a valid keyword
+                if (!Character.isJavaIdentifierPart(line.charAt(i))) {
+                    if (keywordSet.contains(currentWord) && !inComment && !inString) {
                         count++;
                     }
+                    currentWord = "";
                 } else {
-                    System.out.println();
+                    currentWord += line.charAt(i);
                 }
+                if (i >= 1) {
+                    lastTwo = line.substring(i - 1, i + 1);
+                }
+
+                // escape out of block comment
+                if (inComment) {
+                    if (lastTwo.equals("*/")) {
+                        inComment = false;
+                        currentWord = "";
+                    }
+                } else {
+
+                    // escape or enter string
+                    if (line.charAt(i) == '"') {
+                        inString = !inString;
+                        currentWord = "";
+                    }
+                    // Check for block or line comments
+                    else if (lastTwo.equals("/*")) {
+                        inComment = true;
+                        currentWord = "";
+
+                    } else if (lastTwo.equals("//")) {
+                        lastTwo = "";
+                        break;
+                    }
+                }
+            }
+
+            // if keyword at end of line
+            if (keywordSet.contains(currentWord) && !inComment && !inString) {
+                count++;
             }
         }
 
