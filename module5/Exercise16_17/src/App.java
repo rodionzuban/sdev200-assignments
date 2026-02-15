@@ -14,9 +14,11 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) {
+        // mainPane - top is "Show Colors" text, center is sliders
         BorderPane mainPane = new BorderPane();
         mainPane.setPadding(new Insets(10));
 
+        // initialize Show Colors label and center it within a StackPane
         Label showColorsText = new Label("Show Colors");
         showColorsText.setTextFill(Color.BLACK);
         StackPane topPane = new StackPane(showColorsText);
@@ -30,6 +32,7 @@ public class App extends Application {
 
         colorPickerPane.setPadding(new Insets(10));
 
+        // create color and opacity sliders and add to colorPickerPane
         Slider redSlider = new Slider(0, 255, 0);
         Slider greenSlider = new Slider(0, 255, 0);
         Slider blueSlider = new Slider(0, 255, 0);
@@ -43,6 +46,7 @@ public class App extends Application {
         colorPickerPane.addColumn(0, redText, greenText, blueText, opacityText);
         colorPickerPane.addColumn(1, redSlider, greenSlider, blueSlider, opacitySlider);
 
+        // set correct Show Colors label color when it's clicked
         topPane.setOnMouseClicked(e -> {
             showColorsText.setTextFill(
                     new Color(redSlider.getValue() / 255, greenSlider.getValue() / 255, blueSlider.getValue() / 255,
