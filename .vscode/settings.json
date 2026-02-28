@@ -12,5 +12,6 @@
         "c:\\Users\\rodia\\JavaFX\\javafx-sdk-25.0.2\\lib\\jdk.jsobject.jar",
         "c:\\Users\\rodia\\JavaFX\\javafx-sdk-25.0.2\\lib\\jfx.incubator.input.jar",
         "c:\\Users\\rodia\\JavaFX\\javafx-sdk-25.0.2\\lib\\jfx.incubator.richtext.jar"
-    ]
+    ],
+    "java.configuration.updateBuildConfiguration": "interactive"
 }
